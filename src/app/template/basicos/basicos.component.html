@@ -9,8 +9,7 @@
         <div class="col-sm-9">
           <input type="text" class="form-control" placeholder="Nombre de producto" ngModel name="producto" required
             minlength="3">
-          <span *ngIf="miFormulario.controls.producto?.errors && miFormulario.controls.producto?.touched"
-            class="form text-danger">Debe ser de 3 caracteres</span>
+          <span *ngIf="nombreValido()" class="form text-danger">Debe ser de 3 caracteres</span>
         </div>
       </div>
 
