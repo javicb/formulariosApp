@@ -6,7 +6,7 @@
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Nombre</label>
     <div class="col-sm-9">
-      <input class="form-control" placeholder="Nombre de persona" required ngModel name="nombre">
+      <input class="form-control" placeholder="Nombre de persona" required [ngModel]="persona.nombre" name="nombre">
       <span class="form-text text-danger"
         *ngIf="miFormulario.controls.nombre?.errors && miFormulario.controls.nombre?.touched">Este campo es
         obligatorio</span>
@@ -28,11 +28,8 @@
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Favoritos</label>
     <div class="col-sm-9">
-      <input class="form-control mb-1">
-      <input class="form-control mb-1">
-      <input class="form-control mb-1">
-      <input class="form-control mb-1">
-      <input class="form-control mb-1">
+      <input class="form-control mb-1" *ngFor="let juego of persona.favoritos; let i = index" [(ngModel)]="juego.nombre"
+        name="{{i}}" required>
     </div>
   </div>
 
@@ -45,3 +42,7 @@
 
 
 </form>
+
+
+<span>Persona</span>
+<pre>{{persona | json}}</pre>
