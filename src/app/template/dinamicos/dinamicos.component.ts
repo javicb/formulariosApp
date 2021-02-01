@@ -35,4 +35,8 @@ export class DinamicosComponent implements OnInit {
     console.log('click en el boton');
   }
 
+  eliminar(index: number): void {
+    this.persona.favoritos.splice(index, 1);
+  }
+
 }
