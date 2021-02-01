@@ -18,8 +18,9 @@
     <label class="col-sm-3 col-form-label">Agregar</label>
     <div class="col-sm-9">
       <div class="input-group">
-        <input class="form-control" placeholder="Agregar favorito">
-        <button class="btn btn-outline-primary" type="button">Agregar</button>
+        <input class="form-control" placeholder="Agregar favorito" [(ngModel)]="nuevoJuego" name="nuevoJuego"
+          (keyup.enter)="agregar()">
+        <button class="btn btn-outline-primary" type="button" (click)="agregar()">Agregar</button>
       </div>
     </div>
   </div>
@@ -30,7 +31,7 @@
     <div class="col-sm-9">
       <div class="input-group mb-1" *ngFor="let juego of persona.favoritos; let i = index">
         <input class="form-control" [(ngModel)]="juego.nombre" name="{{i}}" required>
-        <button class="btn btn-outline-danger" type="button" (click)="eliminar()">Eliminar</button>
+        <button class="btn btn-outline-danger" type="button" (click)="eliminar(i)">Eliminar</button>
       </div>
     </div>
   </div>
