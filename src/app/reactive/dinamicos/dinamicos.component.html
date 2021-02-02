@@ -31,7 +31,7 @@
     <div class="col-sm-9" formArrayName="favoritos">
       <div class="input-group mb-1" *ngFor="let favorito of favoritosArr.controls; let i = index">
         <input class="form-control" [formControlName]="i">
-        <button class="btn btn-outline-danger" type="button">Eliminar</button>
+        <button class="btn btn-outline-danger" type="button" (click)="borrar(i)">Eliminar</button>
       </div>
     </div>
   </div>
@@ -57,3 +57,4 @@
 <pre>Valid: {{nuevoFavorito.valid}}</pre>
 <pre>Value: {{nuevoFavorito.value}}</pre>
 <br>
+

@@ -62,4 +62,8 @@ export class DinamicosComponent implements OnInit {
     console.log(this.miFormulario.value);
   }
 
+  borrar(i: number): void {
+    this.favoritosArr.removeAt(i);
+  }
+
 }
