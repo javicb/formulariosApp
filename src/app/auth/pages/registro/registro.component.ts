@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -14,15 +14,23 @@ export class RegistroComponent implements OnInit {
 
   miFormulario: FormGroup = this.fb.group({
     nombre: ['', [Validators.required, Validators.pattern(this.nombreApellidoPattenr)]],
-    email: ['', [Validators.required, Validators.pattern(this.emailPattern)]]
+    email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+    username: ['', [Validators.required, this.noPuedeSer123456]]
   });
+
+  noPuedeSer123456(control: FormControl): any {
+    const valor = control.value?.trim().toLowerCase();
+    if (valor === '123456') {
+      return {
+        no123456: true
+      };
+    }
+    return null;
+  }
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    // this.miFormulario.reset({
-    //   nombre: 'Nombre'
-    // });
   }
 
   campoValido(campo: string): any {
