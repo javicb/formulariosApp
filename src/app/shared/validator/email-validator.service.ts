@@ -20,7 +20,7 @@ export class EmailValidatorService implements AsyncValidator {
         map(resp => {
           return (resp.length === 0)
             ? null
-            : { emailTomado: true };
+            : { emailExiste: true };
         })
       );
 

@@ -26,8 +26,20 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  campoValido(campo: string): any {
+  campoValido(campo: string): boolean | undefined {
     return this.miFormulario.get(campo)?.invalid && this.miFormulario.get(campo)?.touched;
+  }
+
+  emailRequired(): boolean | undefined {
+    return this.miFormulario.get('email')?.errors?.required && this.miFormulario.get('email')?.touched;
+  }
+
+  emailFormato(): boolean | undefined {
+    return this.miFormulario.get('email')?.errors?.pattern && this.miFormulario.get('email')?.touched;
+  }
+
+  emailExiste(): boolean | undefined {
+    return this.miFormulario.get('email')?.errors?.emailExiste && this.miFormulario.get('email')?.touched;
   }
 
   submit(): void {
