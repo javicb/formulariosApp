@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SidemeuComponent } from './sidemeu/sidemeu.component';
+import { SidemeuComponent } from './sidemenu/sidemeu.component';
 
 
 
