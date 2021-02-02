@@ -36,7 +36,9 @@
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Password</label>
         <div class="col-sm-9">
-          <input type="password" class="form-control" placeholder="Password de usuario">
+          <input type="password" class="form-control" placeholder="Password de usuario" formControlName="password">
+          <span class="form-text text-danger" *ngIf="campoValido('password')">Password debe ser mayor que 6
+            caracteres</span>
         </div>
       </div>
 
@@ -44,7 +46,8 @@
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Confirmar</label>
         <div class="col-sm-9">
-          <input type="password" class="form-control" placeholder="Confirmar password">
+          <input type="password" class="form-control" placeholder="Confirmar password" formControlName="password2">
+          <span class="form-text text-danger" *ngIf="campoValido('password2')">Passwords deben ser iguales</span>
         </div>
       </div>
 
@@ -58,8 +61,18 @@
   </div>
 </div>
 
-<h2>Form valid</h2>
-<pre>{{miFormulario.valid}}</pre>
+<hr>
+<div class="row">
+  <div class="col">
+    <h2>Form valid</h2>
+    <pre>{{miFormulario.valid}}</pre>
+  </div>
+  <div class="col">
+    <h2>Form Error</h2>
+    <pre>{{miFormulario.errors | json}}</pre>
+  </div>
+</div>
+<hr>
 
 <h4>Nombre</h4>
 <pre>{{ miFormulario.controls.nombre.errors | json }}</pre>
@@ -69,3 +82,9 @@
 
 <h4>Username</h4>
 <pre>{{ miFormulario.controls.username.errors | json }}</pre>
+
+<h4>Password</h4>
+<pre>{{ miFormulario.controls.password.errors | json }}</pre>
+
+<h4>Password2</h4>
+<pre>{{ miFormulario.controls.password2.errors | json }}</pre>
