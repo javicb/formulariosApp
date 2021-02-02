@@ -26,4 +26,8 @@ export class BasicosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  campoValido(campo: string): any {
+    return this.miFormulario.controls[campo].errors && this.miFormulario.controls[campo].touched;
+  }
+
 }
