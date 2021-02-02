@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface Persona {
   nombre: string;
@@ -19,17 +19,17 @@ interface Favorito {
 })
 export class DinamicosComponent implements OnInit {
 
-  // persona: Persona = {
-  //   nombre: 'Javier',
-  //   favoritos: [
-  //     { id: 1, nombre: 'Final Fantasy' },
-  //     { id: 2, nombre: 'Monkey Island' }
-  //   ]
-  // };
-
   miFormulario: FormGroup = this.fb.group({
-    nombre: ['', [Validators.required, Validators.min(3)]]
+    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    favoritos: this.fb.array([
+      ['Final Fantasy', Validators.required],
+      ['Monkey Island', Validators.required]
+    ], Validators.required)
   });
+
+  get favoritosArr(): FormArray {
+    return this.miFormulario.get('favoritos') as FormArray;
+  }
 
   constructor(private fb: FormBuilder) { }
 
